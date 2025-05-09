@@ -47,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(item, index) in filteredData" :key="index" class="hover:bg-gray-50">
+                    <tr v-for="(item, index) in filteredData" :key="index" class="hover:bg-gray-300">
                         <td class="py-2 px-4 border-b">{{ formatDate(item.Date) }}</td>
                         <td class="py-2 px-4 border-b" :title="item['Job Title']">{{ item['Job Title'].substr(0, 50) }}</td>
                         <td class="py-2 px-4 border-b" :title="item.Company">{{ item.Company.substr(0, 50) }}</td>
