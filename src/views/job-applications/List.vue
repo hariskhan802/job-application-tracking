@@ -29,9 +29,11 @@
                 </option>
             </select>
         </div>
-
+        <div>
+            <h4>Count : {{ filteredData.length }}</h4>
+        </div>
         <div class="overflow-x-auto">
-            <table class="min-w-full bg-white border border-gray-300">
+            <table class="min-w-full bg-white border border-gray-300" border="1">
                 <thead class="bg-gray-100">
                     <tr>
                         <th class="py-2 px-4 border-b">Date</th>
@@ -47,8 +49,8 @@
                 <tbody>
                     <tr v-for="(item, index) in filteredData" :key="index" class="hover:bg-gray-50">
                         <td class="py-2 px-4 border-b">{{ formatDate(item.Date) }}</td>
-                        <td class="py-2 px-4 border-b">{{ item['Job Title'] }}</td>
-                        <td class="py-2 px-4 border-b">{{ item.Company }}</td>
+                        <td class="py-2 px-4 border-b" :title="item['Job Title']">{{ item['Job Title'].substr(0, 50) }}</td>
+                        <td class="py-2 px-4 border-b" :title="item.Company">{{ item.Company.substr(0, 50) }}</td>
                         <td class="py-2 px-4 border-b">{{ item.Platform }}</td>
                         <td class="py-2 px-4 border-b">{{ item['Profile Name'] }}</td>
                         <td class="py-2 px-4 border-b">{{ item['Employee Name'] }}</td>
@@ -149,9 +151,16 @@ const uniquePlatforms = computed(() => {
 
 // Format Date
 const formatDate = (isoDate) => {
-    const options = { year: 'numeric', month: 'short', day: 'numeric' }
-    return new Date(isoDate).toLocaleDateString(undefined, options)
-}
+    const options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true, // set to false for 24-hour format
+    };
+    return new Date(isoDate).toLocaleDateString(undefined, options);
+};
 
 const formatInputDate = (isoDate) => {
     const d = new Date(isoDate)
