@@ -33,7 +33,7 @@
             <h4>Count : {{ filteredData.length }}</h4>
         </div>
         <div class="overflow-x-auto">
-            <table class="min-w-full bg-white border border-gray-300" border="1">
+            <table class="min-w-full bg-white border border-gray-300" >
                 <thead class="bg-gray-100">
                     <tr>
                         <th class="py-2 px-4 border-b">Date</th>
